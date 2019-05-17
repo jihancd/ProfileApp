@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Adapter;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.oleg.profileapp.R;
 import com.oleg.profileapp.contact.ContactFragment;
@@ -18,10 +19,12 @@ import com.oleg.profileapp.list_friends.ListFriendsFragment;
 import com.oleg.profileapp.profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
+    private int menuProfile = 0;
+    private int menuContact = 1;
+    private int menuListFriends = 2;
 
     BottomNavigationView bottomNavigationView;
     private ViewPager mPager;
-    private PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +34,46 @@ public class MainActivity extends AppCompatActivity {
         mPager = findViewById(R.id.vp_main);
 
         bottomNavigationView = findViewById(R.id.bnv_main);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemProfile:
-                        Toast.makeText(MainActivity.this, "asdsd", Toast.LENGTH_SHORT).show();
+                        mPager.setCurrentItem(menuProfile);
+                        break;
                     case R.id.itemContact:
-                        Toast.makeText(MainActivity.this, "asdsd", Toast.LENGTH_SHORT).show();
+                        mPager.setCurrentItem(menuContact);
+                        break;
                     case R.id.itemListFriends:
-                        Toast.makeText(MainActivity.this, "asdsd", Toast.LENGTH_SHORT).show();
+                        mPager.setCurrentItem(menuListFriends);
                 }
-                return true;
+                return false;
+            }
+        });
+
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            MenuItem prevMenuItem;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem != null){
+                    prevMenuItem.setChecked(false);
+                } else {
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                }
+                MenuItem bottomIconActive = bottomNavigationView.getMenu().getItem(position);
+                bottomIconActive.setChecked(true);
+                prevMenuItem = bottomIconActive;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
         setupViewPager(mPager);
@@ -59,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager){
-        pagerAdapter = new MainAdapter(getSupportFragmentManager());
-        ((MainAdapter) pagerAdapter).addFragment(new ProfileFragment());
-        ((MainAdapter) pagerAdapter).addFragment(new ContactFragment());
-        ((MainAdapter) pagerAdapter).addFragment(new ListFriendsFragment());
+        MainAdapter pagerAdapter = new MainAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new ProfileFragment());
+        pagerAdapter.addFragment(new ContactFragment());
+        pagerAdapter.addFragment(new ListFriendsFragment());
         viewPager.setAdapter(pagerAdapter);
     }
 }

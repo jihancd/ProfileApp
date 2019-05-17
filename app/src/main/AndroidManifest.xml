@@ -11,7 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".friend_detail.FriendDetailActivity"></activity>
         <activity android:name=".main.MainActivity" />
-        <activity android:name=".profile.ProfileActivity" />
         <activity
             android:name=".main.SplashScreen"
             android:theme="@style/SplashTheme">

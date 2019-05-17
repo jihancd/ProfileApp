@@ -6,7 +6,9 @@ import com.oleg.profileapp.BaseView;
 public class FriendDetailContract {
 
     interface View extends BaseView<Presenter> {
+
         void setLoadingIndicator(boolean active);
+
     }
 
     interface Presenter extends BasePresenter {
