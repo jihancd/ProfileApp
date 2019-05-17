@@ -18,7 +18,6 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment implements ProfileContract.View {
 
-    private static final String TAG = "cek";
     private ProfileContract.Presenter mPresenter;
     private SwipeRefreshLayout swipeRefresh;
     private TextView nim, nama, kelas, deskripsi;
