@@ -47,6 +47,11 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
     }
 
     @Override
+    public void showListFriends() {
+
+    }
+
+    @Override
     public void showFriendDetailUI(String friend_id) {
         // intent ke friend detail
     }

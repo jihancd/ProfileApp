@@ -8,6 +8,8 @@ public class ListFriendsContract {
     interface View extends BaseView<Presenter>{
         void setLoadingIndicator(boolean active);
 
+        void showListFriends();
+
         void showFriendDetailUI(String friend_id);
     }
 

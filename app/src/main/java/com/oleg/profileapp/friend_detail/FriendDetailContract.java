@@ -9,6 +9,8 @@ public class FriendDetailContract {
 
         void setLoadingIndicator(boolean active);
 
+        void showFriend();
+
     }
 
     interface Presenter extends BasePresenter {

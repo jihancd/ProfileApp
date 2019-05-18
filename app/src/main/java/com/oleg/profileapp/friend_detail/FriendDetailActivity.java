@@ -23,4 +23,9 @@ public class FriendDetailActivity extends AppCompatActivity  implements FriendDe
     public void setPresenter(FriendDetailContract.Presenter presenter) {
 
     }
+
+    @Override
+    public void showFriend() {
+
+    }
 }

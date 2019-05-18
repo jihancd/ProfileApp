@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,7 +20,7 @@ import java.util.List;
 public class ProfileFragment extends Fragment implements ProfileContract.View {
 
     private ProfileContract.Presenter mPresenter;
-    private SwipeRefreshLayout swipeRefresh;
+    private ProgressBar progressBar;
     private TextView nim, nama, kelas, deskripsi;
 
     public ProfileFragment() {
@@ -39,18 +40,13 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        nim = view.findViewById(R.id.tvprofile_deskripsi);
+        nim = view.findViewById(R.id.tvprofile_nim);
         nama = view.findViewById(R.id.tvprofile_nama);
         kelas = view.findViewById(R.id.tvprofile_kelas);
         deskripsi = view.findViewById(R.id.tvprofile_deskripsi);
 
-        swipeRefresh = view.findViewById(R.id.sr_profile);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mPresenter.loadProfile(true);
-            }
-        });
+        progressBar = view.findViewById(R.id.pb_profile);
+
         return view;
     }
 
@@ -62,7 +58,11 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
 
     @Override
     public void setLoadingIndicator(boolean active) {
-        swipeRefresh.setRefreshing(active);
+        if (active){
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
