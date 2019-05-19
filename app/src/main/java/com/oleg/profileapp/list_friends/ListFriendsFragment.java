@@ -1,8 +1,8 @@
 package com.oleg.profileapp.list_friends;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +23,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.oleg.profileapp.Model.Friend;
+import com.google.android.material.snackbar.Snackbar;
+import com.oleg.profileapp.model.Friend;
 import com.oleg.profileapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class ListFriendsFragment extends Fragment implements ListFriendsContract.View {
 
@@ -38,6 +44,7 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button btnEdit;
+    private FrameLayout frameLayout;
 
     TextView nim, nama, kelas, email, telepon, instagram, facebook, twitter;
     LinearLayout linearLayout;
@@ -50,9 +57,7 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new ListFriendsPresenter(this);
-
-
+        mPresenter = new ListFriendsPresenter(frameLayout,this);
     }
 
     @Override
@@ -61,20 +66,8 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_friends, container, false);
         recyclerView = view.findViewById(R.id.rv_listFriends);
-
+        frameLayout = view.findViewById(R.id.listFriendLayout);
         setHasOptionsMenu(true);
-//        nim = view.findViewById(R.id.tv_friend_detail_nim);
-//        nama = view.findViewById(R.id.tv_friend_detail_nama);
-//        kelas = view.findViewById(R.id.tv_friend_detail_kelas);
-//        email = view.findViewById(R.id.tv_friend_detail_email);
-//        telepon = view.findViewById(R.id.tv_friend_detail_telepon);
-//        instagram = view.findViewById(R.id.tv_friend_detail_instagram);
-//        twitter = view.findViewById(R.id.tv_friend_detail_twitter);
-//        facebook = view.findViewById(R.id.tv_friend_detail_facebook);
-
-//        linearLayout = view.findViewById(R.id.linear_friend_detail);
-//        linearLayout.setVisibility(View.GONE);
-
         return view;
     }
 
@@ -108,23 +101,6 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
     @Override
     public void showFriendDetailUI(List<Friend> friends, Friend friend, int index) {
         // intent ke friend detail
-//        Intent intent = new Intent(getActivity(), FriendDetailActivity.class);
-//        intent.putExtra(Util.intentParcelable,friend);
-//
-//        ArrayList<Friend> friends = new ArrayList<>(friendList);
-//        intent.putParcelableArrayListExtra(Util.intentParcelableList,friends);
-//        startActivity(intent);
-//        recyclerView.setVisibility(View.GONE);
-//        linearLayout.setVisibility(View.VISIBLE);
-//        nim.setText(friend.getNim());
-//        nama.setText(friend.getNama());
-//        kelas.setText(friend.getKelas());
-//        email.setText(friend.getEmail());
-//        telepon.setText(friend.getTelepon());
-//        instagram.setText(friend.getInstagram());
-//        twitter.setText(friend.getTwitter());
-//        facebook.setText(friend.getFacebook());
-
         final Dialog dialog = new Dialog(Objects.requireNonNull(getActivity()));
         dialog.setContentView(R.layout.activity_friend_detail);
         dialog.setTitle("My Dialog");
@@ -160,12 +136,11 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
                 friend.setInstagram(instagram.getText().toString());
                 friend.setTwitter(twitter.getText().toString());
                 friend.setFacebook(facebook.getText().toString());
-//                mPresenter.onEditFriend(friend, friendList, index);
                 friends.set(index,friend);
-                friends.add(friend);
                 mAdapter = new ListFriendsAdapter(friends,mItemListener);
                 recyclerView.setAdapter(mAdapter);
                 dialog.dismiss();
+                    Snackbar.make(frameLayout,"Data Berhasil Diubah",Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -194,6 +169,11 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
         public void onListFriendClick(List<Friend> friends, Friend clickedListFriend, int index) {
             mPresenter.openDetailFriendDetail(friends, clickedListFriend, index);
 
+        }
+
+        @Override
+        public void onBtnCallClick(Friend clickedListFriend) {
+            mPresenter.onCallFriend(clickedListFriend);
         }
 
         @Override
@@ -250,9 +230,19 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
                        friend.setInstagram(instagram.getText().toString());
                        friend.setTwitter(twitter.getText().toString());
                        friend.setFacebook(facebook.getText().toString());
-                       friendList.add(friend);
-                       mAdapter = new ListFriendsAdapter(friendList,mItemListener);
-                       recyclerView.setAdapter(mAdapter);
+
+
+                       if (nim.getText().toString().isEmpty() || nama.getText().toString().isEmpty() || kelas.getText().toString().isEmpty()
+                            || telepon.getText().toString().isEmpty() || email.getText().toString().isEmpty()
+                       ){
+                            Toast.makeText(getActivity(),"Tolong lengkapi isian anda!",Toast.LENGTH_LONG).show();
+                       } else {
+                           friendList.add(friend);
+                           mAdapter = new ListFriendsAdapter(friendList,mItemListener);
+                           recyclerView.setAdapter(mAdapter);
+                           Snackbar.make(frameLayout,"Data Berhasil Ditambahkan",Snackbar.LENGTH_LONG).show();
+                       }
+
                        dialog.dismiss();
                    }
                });
@@ -267,8 +257,20 @@ public class ListFriendsFragment extends Fragment implements ListFriendsContract
 
     }
 
+    @Override
+    public void showMessage(String message) {
+        Snackbar.make(frameLayout,message,Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void callFriend(Intent intent) {
+        startActivity(intent);
+    }
+
     interface ListFriendsListener {
         void onListFriendClick(List<Friend> friends, Friend clickedListFriend, int index);
+
+        void onBtnCallClick(Friend clickedListFriend);
 
         void onBtnDeleteClick(Friend clickedListFriend);
     }

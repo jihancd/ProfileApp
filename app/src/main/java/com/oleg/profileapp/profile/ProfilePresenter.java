@@ -1,10 +1,15 @@
 package com.oleg.profileapp.profile;
 
-import com.oleg.profileapp.Model.Profile;
+import com.oleg.profileapp.model.Profile;
 import com.oleg.profileapp.repo.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class ProfilePresenter implements ProfileContract.Presenter {
 

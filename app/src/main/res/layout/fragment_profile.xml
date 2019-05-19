@@ -38,6 +38,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:gravity="center"
+        android:textStyle="italic"
         android:text="@string/deskripsi"
         app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
@@ -49,6 +50,7 @@
         android:gravity="center"
         android:text="@string/nim"
         android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@+id/tvprofile_deskripsi" />
 
@@ -58,7 +60,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/nim"
-        android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +72,7 @@
         android:layout_marginTop="@dimen/vertical_margin"
         android:gravity="center"
         android:text="@string/nama"
+        android:textColor="@color/colorPrimary"
         android:textAllCaps="true"
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@+id/tvprofile_nim"
@@ -97,6 +99,8 @@
         android:text="@string/kelas"
         android:textAllCaps="true"
         android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+
         app:layout_constraintTop_toBottomOf="@+id/tvprofile_nama"
         tools:layout_editor_absoluteX="0dp" />
 

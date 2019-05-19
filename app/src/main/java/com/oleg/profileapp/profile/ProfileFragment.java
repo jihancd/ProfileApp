@@ -1,22 +1,22 @@
 package com.oleg.profileapp.profile;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.oleg.profileapp.Model.Profile;
+import com.oleg.profileapp.model.Profile;
 import com.oleg.profileapp.R;
 
 import java.util.List;
-
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 public class ProfileFragment extends Fragment implements ProfileContract.View {
 
     private ProfileContract.Presenter mPresenter;

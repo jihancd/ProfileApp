@@ -1,4 +1,4 @@
-package com.oleg.profileapp.friend_detail;
+package com.oleg.profileapp.onboarding;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import com.oleg.profileapp.R;
 // Nama : Lukmannudin
 // Kelas :IF - 8
 
-public class FriendDetailFragment extends Fragment {
+public class ScreenFragmentDua extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class FriendDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend_detail, container, false);
+        return inflater.inflate(R.layout.fragment_screen_fragment_dua, container, false);
     }
 
 }

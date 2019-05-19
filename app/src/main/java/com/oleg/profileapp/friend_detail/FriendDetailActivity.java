@@ -7,11 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.oleg.profileapp.Model.Friend;
+import com.oleg.profileapp.model.Friend;
 import com.oleg.profileapp.R;
 import com.oleg.profileapp.util.Util;
 
 import java.util.ArrayList;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class FriendDetailActivity extends AppCompatActivity  implements FriendDetailContract.View{
     FriendDetailContract.Presenter mPresenter;

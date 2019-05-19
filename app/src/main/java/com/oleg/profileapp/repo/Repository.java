@@ -1,9 +1,14 @@
 package com.oleg.profileapp.repo;
 
-import com.oleg.profileapp.Model.Friend;
-import com.oleg.profileapp.Model.Profile;
+import com.oleg.profileapp.model.Friend;
+import com.oleg.profileapp.model.Profile;
 
 import java.util.ArrayList;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class Repository {
     static String[] profileData = new String[]{

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oleg.profileapp">
 
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission-sdk-23 android:name="android.permission.CALL_PHONE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".friend_detail.FriendDetailActivity"></activity>
+        <activity android:name=".onboarding.OnBoardingActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".friend_detail.FriendDetailActivity" />
         <activity android:name=".main.MainActivity" />
         <activity
             android:name=".main.SplashScreen"

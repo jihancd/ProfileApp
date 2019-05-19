@@ -7,4 +7,8 @@
     <string name="nama">nama</string>
     <string name="nim">nim</string>
     <string name="deskripsi">deskripsi</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eum hic modi ratione tempora vel vitae. Eaque earum eligendi enim, error, ex excepturi, neque nobis obcaecati sed sit vitae voluptas!</string>
+    <string name="profile">Menyimpan profil anda dengan tampilan yang menarik</string>
+    <string name="contact">Kontak anda kami simpan dengan rapi</string>
+    <string name="list_friends">Hubungi dan ingat selalu kontak teman dan kerabat dekat anda</string>
 </resources>

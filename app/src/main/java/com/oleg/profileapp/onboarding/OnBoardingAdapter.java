@@ -1,4 +1,4 @@
-package com.oleg.profileapp.main;
+package com.oleg.profileapp.onboarding;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,12 +12,11 @@ import java.util.ArrayList;
 // Nama : Lukmannudin
 // Kelas :IF - 8
 
-public class MainAdapter extends FragmentPagerAdapter {
-
+public class OnBoardingAdapter extends FragmentPagerAdapter {
     private static final int NUM_PAGES = 3;
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
 
-    MainAdapter(@NonNull FragmentManager fm) {
+    OnBoardingAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
@@ -25,6 +24,8 @@ public class MainAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);
+//        return new ScreenSlidePageFragment();
+
     }
 
     @Override

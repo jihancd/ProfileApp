@@ -22,6 +22,7 @@
             android:id="@+id/tv_friend_detail_nim"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:inputType="numberSigned"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -39,6 +40,7 @@
         <EditText
             android:id="@+id/tv_friend_detail_nama"
             android:layout_width="0dp"
+            android:inputType="textPersonName"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
@@ -73,6 +75,7 @@
             android:text="Email" />
 
         <EditText
+            android:inputType="textEmailAddress"
             android:id="@+id/tv_friend_detail_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -94,6 +97,7 @@
             android:id="@+id/tv_friend_detail_telepon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:layout_weight="1" />
     </LinearLayout>
 

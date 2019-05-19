@@ -1,7 +1,12 @@
-package com.oleg.profileapp.Model;
+package com.oleg.profileapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class Friend implements Parcelable {
     String nim, nama, kelas, telepon, email, twitter, instagram, facebook;

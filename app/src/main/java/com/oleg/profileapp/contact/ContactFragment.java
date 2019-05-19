@@ -8,12 +8,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.oleg.profileapp.Model.Friend;
+import com.oleg.profileapp.model.Friend;
 import com.oleg.profileapp.R;
 
 import java.util.List;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class ContactFragment extends Fragment implements ContactContract.View {
     private ProgressBar progressBar;

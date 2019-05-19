@@ -1,10 +1,15 @@
 package com.oleg.profileapp.contact;
 
-import com.oleg.profileapp.Model.Friend;
+import com.oleg.profileapp.model.Friend;
 import com.oleg.profileapp.repo.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class ContactPresenter implements ContactContract.Presenter {
     private final ContactContract.View mContactView;

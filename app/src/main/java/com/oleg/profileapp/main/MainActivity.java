@@ -18,6 +18,11 @@ import com.oleg.profileapp.contact.ContactFragment;
 import com.oleg.profileapp.list_friends.ListFriendsFragment;
 import com.oleg.profileapp.profile.ProfileFragment;
 
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
+
 public class MainActivity extends AppCompatActivity {
     private int menuProfile = 0;
     private int menuContact = 1;
@@ -76,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         setupViewPager(mPager);
+        mPager.setPageTransformer(true, new DepthPageTransformer());
     }
 
     @Override
@@ -96,4 +103,8 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter.addFragment(new ListFriendsFragment());
         viewPager.setAdapter(pagerAdapter);
     }
+
+
 }
+
+

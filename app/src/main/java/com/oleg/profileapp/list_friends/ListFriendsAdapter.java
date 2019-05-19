@@ -10,10 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.oleg.profileapp.Model.Friend;
+import com.oleg.profileapp.model.Friend;
 import com.oleg.profileapp.R;
 
 import java.util.List;
+
+// Tanggal Pengerjaan : 19 Mei 2019
+// NIM : 10116347
+// Nama : Lukmannudin
+// Kelas :IF - 8
 
 public class ListFriendsAdapter extends RecyclerView.Adapter<ListFriendsAdapter.ViewHolder> {
 
@@ -36,7 +41,6 @@ public class ListFriendsAdapter extends RecyclerView.Adapter<ListFriendsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        holder.tvName.setText(mDataSet.get(position).getNama());
         holder.bindItem(mDataSet.get(position),listener, position);
     }
 
@@ -48,11 +52,12 @@ public class ListFriendsAdapter extends RecyclerView.Adapter<ListFriendsAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
         ImageView btnDelete;
-
+        ImageView btnCalling;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.item_friend_nama);
             btnDelete = itemView.findViewById(R.id.btn_friend_delete);
+            btnCalling = itemView.findViewById(R.id.btnTelepon);
         }
 
         void bindItem(final Friend friend, final ListFriendsFragment.ListFriendsListener listener, int position){
@@ -64,12 +69,21 @@ public class ListFriendsAdapter extends RecyclerView.Adapter<ListFriendsAdapter.
                 }
             });
 
+            btnCalling.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onBtnCallClick(friend);
+                }
+            });
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onListFriendClick(mDataSet,friend, position);
                 }
             });
+
+
         }
 
     }
