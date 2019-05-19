@@ -1,7 +1,10 @@
 package com.oleg.profileapp.Model;
 
-public class Friend {
-    String nim,nama,kelas,telepon,email,twitter,instagram,facebook;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Friend implements Parcelable {
+    String nim, nama, kelas, telepon, email, twitter, instagram, facebook;
 
     public Friend(String nim, String nama, String kelas, String telepon, String email, String twitter, String instagram, String facebook) {
         this.nim = nim;
@@ -14,7 +17,31 @@ public class Friend {
         this.facebook = facebook;
     }
 
-    public Friend(){}
+    public Friend() {
+    }
+
+    protected Friend(Parcel in) {
+        nim = in.readString();
+        nama = in.readString();
+        kelas = in.readString();
+        telepon = in.readString();
+        email = in.readString();
+        twitter = in.readString();
+        instagram = in.readString();
+        facebook = in.readString();
+    }
+
+    public static final Creator<Friend> CREATOR = new Creator<Friend>() {
+        @Override
+        public Friend createFromParcel(Parcel in) {
+            return new Friend(in);
+        }
+
+        @Override
+        public Friend[] newArray(int size) {
+            return new Friend[size];
+        }
+    };
 
     public String getNim() {
         return nim;
@@ -78,5 +105,22 @@ public class Friend {
 
     public void setFacebook(String facebook) {
         this.facebook = facebook;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nim);
+        dest.writeString(nama);
+        dest.writeString(kelas);
+        dest.writeString(telepon);
+        dest.writeString(email);
+        dest.writeString(twitter);
+        dest.writeString(instagram);
+        dest.writeString(facebook);
     }
 }

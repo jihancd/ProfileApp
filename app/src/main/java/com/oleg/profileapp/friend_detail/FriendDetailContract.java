@@ -2,6 +2,7 @@ package com.oleg.profileapp.friend_detail;
 
 import com.oleg.profileapp.BasePresenter;
 import com.oleg.profileapp.BaseView;
+import com.oleg.profileapp.Model.Friend;
 
 public class FriendDetailContract {
 
@@ -9,16 +10,17 @@ public class FriendDetailContract {
 
         void setLoadingIndicator(boolean active);
 
-        void showFriend();
+        void showFriend(Friend friend);
 
     }
 
     interface Presenter extends BasePresenter {
 
+        void onShowFriend(Friend friend);
+
         void loadFriendProfile();
 
         void editFriendProfile();
 
-        void deleteFriendProfile();
     }
 }

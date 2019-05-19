@@ -12,7 +12,7 @@ public class ListFriendsContract {
 
         void showListFriends(List<Friend> friends);
 
-        void showFriendDetailUI(String friend_id);
+        void showFriendDetailUI(List<Friend> friends,Friend friend, int index);
     }
 
     interface Presenter extends BasePresenter {
@@ -20,6 +20,10 @@ public class ListFriendsContract {
 
         void addNewFriend();
 
-        void openDetailFriendDetail(Friend requestedFriend);
+        void openDetailFriendDetail(List<Friend> friends,Friend requestedFriend, int index);
+
+        void onDeleteFriend(Friend friend);
+
+        void onEditFriend(Friend friend, List<Friend> friends, int index);
     }
 }

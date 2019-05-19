@@ -1,6 +1,30 @@
 package com.oleg.profileapp.friend_detail;
 
+import com.oleg.profileapp.Model.Friend;
+
 public class FriendDetailPresenter implements FriendDetailContract.Presenter {
+    private Friend repository = new Friend();
+    private final FriendDetailContract.View friendDetailView;
+
+    FriendDetailPresenter(FriendDetailContract.View friendDetailView,
+                          Friend friend) {
+
+        this.friendDetailView = friendDetailView;
+        this.repository = friend;
+    }
+
+
+    @Override
+    public void start() {
+        onShowFriend(repository);
+    }
+
+    @Override
+    public void onShowFriend(Friend friend) {
+        friendDetailView.showFriend(friend);
+    }
+
+
     @Override
     public void loadFriendProfile() {
 
@@ -11,13 +35,5 @@ public class FriendDetailPresenter implements FriendDetailContract.Presenter {
 
     }
 
-    @Override
-    public void deleteFriendProfile() {
 
-    }
-
-    @Override
-    public void start() {
-
-    }
 }

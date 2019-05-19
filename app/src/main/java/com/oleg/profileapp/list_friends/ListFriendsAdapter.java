@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,9 +18,12 @@ import java.util.List;
 public class ListFriendsAdapter extends RecyclerView.Adapter<ListFriendsAdapter.ViewHolder> {
 
     private List<Friend> mDataSet;
+    private ListFriendsFragment.ListFriendsListener listener;
 
-    public ListFriendsAdapter(List<Friend> mDataSet) {
+    public ListFriendsAdapter(List<Friend> mDataSet,ListFriendsFragment.ListFriendsListener listener) {
         this.mDataSet = mDataSet;
+        Log.d("cek", "ListFriendsAdapter: "+mDataSet.size());
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,22 +36,41 @@ public class ListFriendsAdapter extends RecyclerView.Adapter<ListFriendsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvName.setText(mDataSet.get(position).getNama());
+//        holder.tvName.setText(mDataSet.get(position).getNama());
+        holder.bindItem(mDataSet.get(position),listener, position);
     }
 
     @Override
     public int getItemCount() {
-        Log.d("cek", "getItemCount: "+mDataSet.size());
         return mDataSet.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
-
+        ImageView btnDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.item_friend_nama);
+            btnDelete = itemView.findViewById(R.id.btn_friend_delete);
         }
+
+        void bindItem(final Friend friend, final ListFriendsFragment.ListFriendsListener listener, int position){
+            tvName.setText(friend.getNama());
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onBtnDeleteClick(friend);
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onListFriendClick(mDataSet,friend, position);
+                }
+            });
+        }
+
     }
 }
