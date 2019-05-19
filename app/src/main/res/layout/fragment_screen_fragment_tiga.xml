@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/listfriends_onboarding"
+            android:id="@+id/iv_list_friend_onboarding"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="8dp"
@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_list_friend_onboarding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
@@ -34,7 +35,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listfriends_onboarding" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_list_friend_onboarding" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
